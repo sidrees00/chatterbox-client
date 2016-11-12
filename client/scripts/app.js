@@ -1,5 +1,3 @@
-
-
 var app = {};
 app.init = function() {};
 app.server = 'https://api.parse.com/1/classes/messages';
@@ -87,7 +85,6 @@ app.handleSubmit = function (message) {
 
 $(document).ready(function() {
 
-//$('')
 
 });
 
