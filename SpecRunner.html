@@ -8,7 +8,7 @@
   <script src="lib/chai/chai.js"></script>
   <script src="lib/sinon/sinon.js"></script>
   <script src="client/scripts/app.js"></script>
-  
+
   <script>
     mocha.setup('bdd');
     var expect = chai.expect;
@@ -38,7 +38,7 @@
     </div>
     <form action="#" id="send" method="post">
       <input type="text" name="message" id="message"/>
-      <input type="submit" name="submit" class="submit"/>
+      <input type="submit" name="submit" class="submit" onsubmit="app.handleSubmit()" />
     </form>
     <div id="chats"></div>
   </div>

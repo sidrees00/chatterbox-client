@@ -1,3 +1,5 @@
+
+
 var app = {};
 app.init = function() {};
 app.server = 'https://api.parse.com/1/classes/messages';
@@ -9,7 +11,7 @@ var message = {
   roomname: 'lobby'
 };
 
-app.send = function() {
+app.send = function(message) {
   $.ajax({
   // This is the url you should use to communicate with the parse API server.
     url: 'https://api.parse.com/1/classes/messages',
@@ -27,6 +29,8 @@ app.send = function() {
 };
 
 app.fetch = function() {
+  var that = this;
+
   $.ajax({
   // This is the url you should use to communicate with the parse API server.
     url: this.server,
@@ -35,12 +39,18 @@ app.fetch = function() {
     contentType: 'application/json',
     success: function (data) {
       console.log('chatterbox: Message sent');
+      console.log(data);
+
+      for (var i = 0; i < data.results.length; i++) {
+        that.renderMessage(data.results[i]);
+      }
     },
     error: function (data) {
       // See: https://developer.mozilla.org/en-US/docs/Web/API/console.error
       console.error('chatterbox: Failed to send message', data);
     }
   });
+
 };
 
 app.clearMessages = function() {
@@ -59,13 +69,27 @@ app.renderRoom = function(room) {
   $('#roomSelect').append(`<p>${room}</p>`);
 };
 
-app.handleUsernameClick = function() {
-  alert('cats');
+app.handleClick = function() {
+
+  this.fetch();
 
 };
 
+app.handleUsernameClick = function() {
+  console.log('hello');
+};
 
+app.handleSubmit = function (message) {
+  console.log('fuzzy cat');
+  var i = $('#message').val();
+  console.log(i);
+};
 
+$(document).ready(function() {
+
+//$('')
+
+});
 
 
 
